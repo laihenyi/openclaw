@@ -95,7 +95,7 @@ const activeRecordings = new Map();
  * AI 回覆
  */
 async function getAIReply(message) {
-  const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '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';
+  const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '';
   const MODEL = 'stepfun/step-3.5-flash:free';
 
   try {
