@@ -147,8 +147,38 @@ async function handleMessage(message, content) {
 
   // 自動識別 URL 並觸發下載
   const urlMatch = content.match(/https?:\/\/[^\s]+/);
-  if (urlMatch && (content.includes('youtube.com') || content.includes('youtu.be') || content.includes('bilibili.com'))) {
+
+  // 支援的影片網站
+  const SUPPORTED_SITES = [
+    'youtube.com', 'youtu.be',
+    'bilibili.com', 'b23.tv',
+    'twitter.com', 'x.com',
+    'vimeo.com',
+    'tiktok.com',
+    'instagram.com',
+    'facebook.com', 'fb.watch',
+    'twitch.tv',
+    'dailymotion.com',
+    'nicovideo.jp',
+  ];
+
+  // 不支援的網站
+  const UNSUPPORTED_SITES = ['threads.com', 'threads.net'];
+
+  if (urlMatch) {
     const url = urlMatch[0];
+
+    // 檢查是否為不支援的網站
+    if (UNSUPPORTED_SITES.some(site => url.includes(site))) {
+      await message.reply(`❌ **不支援的網站**\n\nThreads 目前不支援影片下載。\n\n**支援的網站：**\nYouTube, Bilibili, Twitter/X, Vimeo, TikTok, Instagram, Facebook, Twitch, Dailymotion, Niconico`);
+      return;
+    }
+
+    // 檢查是否為支援的網站
+    if (!SUPPORTED_SITES.some(site => url.includes(site))) {
+      await message.reply(`⚠️ **未知的網站**\n\n將嘗試下載，但不保證成功。\n\n**確定支援的網站：**\nYouTube, Bilibili, Twitter/X, Vimeo, TikTok, Instagram, Facebook, Twitch`);
+    }
+
     console.log(`[Auto-Download] Detected URL: ${url}`);
 
     // 創建任務
