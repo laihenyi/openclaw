@@ -71,3 +71,13 @@ USER.md
 
 # local tooling
 .serena/
+
+# Local agents/skills
+venv/
+__pycache__/
+*.pyc
+*.mp3
+*.wav
+tts_output/
+recordings/
+*.log

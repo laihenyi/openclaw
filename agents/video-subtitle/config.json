@@ -1,0 +1,20 @@
+{
+  "bot": {
+    "token": "${VIDEO_SUBTITLE_BOT_TOKEN}",
+    "name": "Video Subtitle Agent"
+  },
+  "voice": {
+    "silenceThreshold": 3000,
+    "minAudioDuration": 1000,
+    "sampleRate": 48000,
+    "channels": 2,
+    "enableVoiceReply": true
+  },
+  "agent": {
+    "downloadPath": "~/clawd/downloads",
+    "whisperLanguage": "zh-TW",
+    "fileServerUrl": "http://192.168.100.100:18800/",
+    "defaultQuality": "720p",
+    "cleanupDays": 60
+  }
+}
