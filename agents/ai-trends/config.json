@@ -1,0 +1,22 @@
+{
+  "scheduleHour": 10,
+  "scheduleMinute": 0,
+  "timezone": "Asia/Taipei",
+  "defaultChannelId": null,
+  "searchKeywords": [
+    "AI agent framework",
+    "LLM breakthrough",
+    "OpenAI GPT news",
+    "Claude Anthropic update",
+    "AI open source",
+    "machine learning research"
+  ],
+  "githubTopics": [
+    "artificial-intelligence",
+    "llm",
+    "machine-learning",
+    "deep-learning",
+    "langchain",
+    "openai"
+  ]
+}
