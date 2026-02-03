@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import 'dotenv/config';
 /**
  * AI Trends Agent - 獨立 Discord Bot
  *

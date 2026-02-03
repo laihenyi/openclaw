@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import 'dotenv/config';
 /**
  * Video Subtitle Agent - 獨立 Discord Bot
  *
