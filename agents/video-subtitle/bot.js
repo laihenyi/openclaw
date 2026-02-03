@@ -467,12 +467,25 @@ async function processRecording(userId, textChannel) {
   }
 }
 
+// 防止重複處理
+const processedMessages = new Set();
+const DEDUP_TIMEOUT = 10000; // 10 秒內相同訊息不重複處理
+
 // 訊息事件
 client.on(Events.MessageCreate, async (message) => {
   // 調試日誌
   console.log(`[Debug] Message received: "${message.content}" from ${message.author.tag} (bot: ${message.author.bot})`);
 
   if (message.author.bot) return;
+
+  // 防止重複處理相同訊息
+  const msgKey = `${message.author.id}-${message.content}`;
+  if (processedMessages.has(msgKey)) {
+    console.log(`[Debug] Skipping duplicate message: ${msgKey}`);
+    return;
+  }
+  processedMessages.add(msgKey);
+  setTimeout(() => processedMessages.delete(msgKey), DEDUP_TIMEOUT);
 
   const isDM = message.channel.type === ChannelType.DM;
   const isMention = message.mentions.has(client.user);
